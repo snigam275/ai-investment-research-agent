@@ -1282,3 +1282,116 @@ I will run `git status` to see what changes are currently pending after our comp
 
 ---
 
+### 🤖 ASSISTANT
+
+I will stage and commit all the component updates implementing the dual-theme palette, and then re-run the transcript converter to keep the documentation up to date.
+
+---
+
+### 🤖 ASSISTANT
+
+I will run a final check on the repository's status.
+
+---
+
+### 🤖 ASSISTANT
+
+I have successfully added a **dual Light/Dark theme palette** to the application! 
+
+### 🎨 Theme Support Implementation Summary
+
+1. **Light/Dark Toggle Button**: Added a floating toggle button (Sun/Moon icon) at the top right of [app/page.tsx](file:///c:/Users/shrey/Desktop/IIMtask/app/page.tsx). It persists the user's selected mode in `localStorage` and toggles between `.dark` and `.light` root classes.
+2. **Semantic Theme Token Mapping**: Refactored [app/globals.css](file:///c:/Users/shrey/Desktop/IIMtask/app/globals.css) to declare semantic Tailwind variables for both light and dark modes. Standard tailwind classes automatically swap color schemes:
+   - `bg-bg-app` (background)
+   - `text-fg-app` (body text)
+   - `bg-card-bg` / `border-card-border` (glass cards)
+   - `text-text-main` / `text-text-muted` / `text-text-dim` (typography hierarchies)
+3. **Adaptive Component Contrasts**:
+   - Upgraded [VerdictBadge.tsx](file:///c:/Users/shrey/Desktop/IIMtask/components/VerdictBadge.tsx), [ScoreGauge.tsx](file:///c:/Users/shrey/Desktop/IIMtask/components/ScoreGauge.tsx), [SearchForm.tsx](file:///c:/Users/shrey/Desktop/IIMtask/components/SearchForm.tsx), [ResultsDashboard.tsx](file:///c:/Users/shrey/Desktop/IIMtask/components/ResultsDashboard.tsx), and [ResearchSection.tsx](file:///c:/Users/shrey/Desktop/IIMtask/components/ResearchSection.tsx) to adapt text contrast levels and tint backgrounds in light mode.
+   - The terminal log box in `LoadingState.tsx` is intentionally left dark in both themes to mimic a developer IDE environment, providing a sleek visual contrast.
+
+---
+
+### 🌐 End-to-End Theme Verification
+
+I ran a browser subagent checks to record both theme rendering behaviors:
+- **Default Dark Mode**: Renders the glowing dashboard correctly.
+- **Toggled Light Mode**: Clicking the Sun toggle shifts the application to an off-white workspace theme. Running a query (like *"Zomato"*) in Light Mode compiles the search data successfully, drawing a clear Results Dashboard with high-contrast text and pastel-colored cards.
+
+You can inspect the Light Mode search and dashboard screenshots, along with the full theme-swapping test recording, in the updated [walkthrough.md](file:///C:/Users/shrey/.gemini/antigravity-ide/brain/a5fb1538-7e0c-4921-867b-81f6690d0b2c/walkthrough.md).
+
+All styling adjustments have been successfully checked in and committed to Git (your local repository is clean)! The development server is active, so you can test it live now.
+
+---
+
+### 👤 USER
+
+<USER_REQUEST>
+use some light theme other than white like combination of warm yellow + greenish blue and words with white use good colour palatte
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-06-28T23:07:09+05:30.
+
+The user's current state is as follows:
+Active Document: c:\Users\shrey\Desktop\IIMtask\.env.local (LANGUAGE_UNSPECIFIED)
+Cursor is on line: 1
+Other open documents:
+- c:\Users\shrey\Desktop\IIMtask\.env.local (LANGUAGE_UNSPECIFIED)
+- c:\Users\shrey\Downloads\MASTER_PROMPT_AI_Investment_Agent.md (LANGUAGE_MARKDOWN)
+Browser State:
+  Page 863619C1B066FE5F96C705010A86EA3B (AI Investment Research Agent) - http://localhost:3000/ [ACTIVE]
+    Viewport: 1450x774, Page Height: 1909
+Running terminal commands:
+- npm run dev (in c:\Users\shrey\Desktop\IIMtask, running for 1h0m18s)
+</ADDITIONAL_METADATA>
+
+---
+
+### 🤖 ASSISTANT
+
+I will update `app/globals.css` to implement the custom light theme color palette: a warm cream-yellow base background, deep greenish-navy slate text for premium readability, and seafoam-green/teal (greenish-blue) glows for accent highlights and border outlines. This replaces the basic off-white theme.
+
+---
+
+### 🤖 ASSISTANT
+
+I will update `app/page.tsx` to align the page styling with the greenish-blue and warm yellow light theme. This includes shifting the landing page gradient title to a teal-to-amber transition, updating feature badges to seafoam/teal text in light mode, and changing search action buttons to use the greenish-blue gradients when in the light theme.
+
+---
+
+### 🤖 ASSISTANT
+
+I will update the search form in `components/SearchForm.tsx` to map the submit button to a greenish-blue/teal gradient (`from-teal-600 to-cyan-600`) and configure the tag button hovers to use a soft seafoam green backdrop in the light theme.
+
+---
+
+### 🤖 ASSISTANT
+
+I will update the reset button style at the bottom of `components/ResultsDashboard.tsx` to match the greenish-blue accent colors in light mode.
+
+---
+
+### 🤖 ASSISTANT
+
+I will compile the project to verify that the gradient updates and layout adjustments compile successfully.
+
+---
+
+### 🤖 ASSISTANT
+
+I will wait for the build command to complete.
+
+---
+
+### 🤖 ASSISTANT
+
+I will run the browser subagent to verify the warm yellow and greenish-blue layout in the browser. It will toggle the theme, search for `"Zomato"`, and capture screenshots of the updated interface styles.
+
+---
+
+### 🤖 ASSISTANT
+
+I will update `walkthrough.md` to include our new screenshots and recording. This documents the warm yellow background and greenish-blue accents of the light mode palette, and renders a carousel sequence comparing both themes.
+
+---
+
