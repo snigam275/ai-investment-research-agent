@@ -2,6 +2,10 @@
 
 **Built with:** Google Antigravity IDE (AI coding assistant powered by Gemini / Claude)  
 **Stack:** Next.js 16 · LangGraph.js · Google Gemini 2.5 Flash · Tavily Search · MongoDB  
+**Live Demo:** https://ai-investment-research-agent-kohl.vercel.app/  
+**GitHub:** https://github.com/snigam275/ai-investment-research-agent  
+
+> ⚠️ **Rate Limit Notice:** The live demo uses the Gemini 2.5 Flash free tier API key, which has rate limits (requests per minute). If the live search returns an error, it means the free quota is temporarily exhausted. The application works fully when run locally with a paid or higher-quota API key.
 
 ---
 
@@ -172,7 +176,7 @@ The system persona is *"a senior investment analyst with 20 years of experience 
 | **Real-time log streaming** | Would require Server-Sent Events infrastructure. At 8–15s total latency, the simulated terminal log provides a good UX approximation without the complexity. |
 | **User authentication** | Out of scope for MVP. All research is shared in the database. Adding NextAuth would be a natural next step. |
 | **Live price data / candlesticks** | Requires a paid financial data API (Alpha Vantage, Yahoo Finance). Excluded to keep the stack free and minimal. |
-| **Vercel deployment** | Configured (`maxDuration = 60`, `serverExternalPackages`) but not executed — requires MongoDB Atlas URI for database persistence. |
+| **Vercel deployment** | ✅ **Deployed** — live at https://ai-investment-research-agent-kohl.vercel.app/ with `maxDuration = 60`, `force-dynamic`, and `serverExternalPackages` for LangGraph + MongoDB. Note: free-tier Gemini API rate limits apply on the live demo. |
 | **Portfolio tracking / alerts** | Requires persistent user sessions. A natural extension of the caching layer that exists. |
 
 ---
@@ -290,6 +294,8 @@ Research Breakdown:
 ---
 
 ## 6. What I Would Improve with More Time
+
+> **Note on live demo:** The Vercel deployment is live but uses the Gemini 2.5 Flash free tier, which enforces rate limits (RPM quotas). With more time, I would upgrade to a paid Gemini API key or implement a request queue to gracefully handle concurrent users on the production deployment.
 
 ### Near-term (1–2 weeks)
 
