@@ -1069,3 +1069,216 @@ I will run `git diff` on `lib/agent.ts` to see what local changes are currently 
 
 ---
 
+### 🤖 ASSISTANT
+
+I will stage and commit the model update in `lib/agent.ts`, then re-run the transcript converter to keep the documentation aligned, and commit the final transcript changes.
+
+---
+
+### 🤖 ASSISTANT
+
+I will run a final check on `git status` to ensure all changes are fully committed.
+
+---
+
+### 🤖 ASSISTANT
+
+I have completely checked the project, diagnosed the model error, resolved it, and validated the entire application end-to-end!
+
+Here is what was identified, resolved, and verified:
+
+### 🛠️ Issues Found & Resolved
+
+1. **Gemini Model 404 & Quota Block (Resolved)**:
+   - **Symptom**: During live search execution, the Google Gemini API returned a `[404 Not Found] models/gemini-1.5-flash is not found for API version v1beta` warning, or a quota block (`limit: 0`) for `gemini-2.0-flash`.
+   - **Diagnosis**: I created and ran a dependency-free model diagnostic script using your local environment key to test different model paths. The diagnostics confirmed that the newer **`gemini-2.5-flash`** model successfully authenticated and bypassed all region and quota constraints.
+   - **Fix**: I updated [lib/agent.ts](file:///c:/Users/shrey/Desktop/IIMtask/lib/agent.ts) to utilize the `'gemini-2.5-flash'` identifier.
+
+---
+
+### 🌐 End-to-End Search Verification
+
+Using a browser subagent, I verified the page rendering and ran a live search for **`"Zomato"`**:
+1. The search form executed the search pipeline successfully.
+2. The custom animated loading terminal printed real-time logs for all Tavily search query stages and processing milestones.
+3. Once completed, the interface **successfully transitioned into the premium Results Dashboard**:
+   - **Verdict**: **INVEST ✓**
+   - **Confidence Score**: **85**
+   - **Analyst Reasoning**: Correctly highlighted food delivery dominance, margin expansions, and Blinkit's hyper-growth.
+   - **Strengths, Weaknesses, Risks**: Balanced lists of pros/cons (such as gig economy regulations, capex, and competitive margins).
+   - **Interactive Breakdown Cards**: Detailed financials, sentiment, peers, and risks cards rendered dynamically with active sentiment tags.
+
+You can inspect the screenshots and full execution flow recording inside the updated [walkthrough.md](file:///C:/Users/shrey/.gemini/antigravity-ide/brain/a5fb1538-7e0c-4921-867b-81f6690d0b2c/walkthrough.md) file.
+
+---
+
+### 📂 Clean Git Staging
+All source files, visual walkthroughs, task trackers, and your chat log transcript ([TRANSCRIPT.md](file:///c:/Users/shrey/Desktop/IIMtask/TRANSCRIPT.md)) are fully updated and committed. The local repository is **100% clean and ready for deployment**.
+
+Your server is currently running, so you can open your browser at **[http://localhost:3000](http://localhost:3000)** and perform searches right away!
+
+---
+
+### 👤 USER
+
+<USER_REQUEST>
+Tell me what this project doing 
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-06-28T22:40:37+05:30.
+
+The user's current state is as follows:
+Active Document: c:\Users\shrey\Desktop\IIMtask\.env.local (LANGUAGE_UNSPECIFIED)
+Cursor is on line: 1
+Other open documents:
+- c:\Users\shrey\Desktop\IIMtask\.env.local (LANGUAGE_UNSPECIFIED)
+- c:\Users\shrey\Downloads\MASTER_PROMPT_AI_Investment_Agent.md (LANGUAGE_MARKDOWN)
+Browser State:
+  Page 863619C1B066FE5F96C705010A86EA3B (AI Investment Research Agent) - http://localhost:3000/ [ACTIVE]
+    Viewport: 1450x774, Page Height: 1933
+Running terminal commands:
+- npm run dev (in c:\Users\shrey\Desktop\IIMtask, running for 33m46s)
+</ADDITIONAL_METADATA>
+
+---
+
+### 🤖 ASSISTANT
+
+This project is an **AI-Powered Investment Research Agent** that acts like a professional stock analyst. Here is exactly what the project does when you enter a company name:
+
+### 1. Multi-Dimensional Web Search (Tavily)
+The moment you search for a company (e.g., *Apple*, *Tesla*, or *Zomato*), the agent triggers **4 web searches in parallel** to gather live intelligence:
+*   **📊 Financials**: Scans for the latest revenue growth, profit margins, balance sheets, and annual reports.
+*   **📰 News & Sentiment**: Scans headlines for recent product announcements, public opinions, and market buzz.
+*   **⚔️ Competitors**: Analyzes the company's industry position, market share, and product moat.
+*   **⚠️ Risks**: Examines regulatory problems, debt concerns, and other challenges.
+
+### 2. Live Agent Orchestration (LangGraph.js)
+The agent coordinates these searches using a workflow state machine. As it works, it displays an **animated terminal log stream** on your screen (like a developer command line) showing exactly what query it is running, what articles it is parsing, and its current progress.
+
+### 3. Smart Synthesis & Verdict (Google Gemini 2.5 Flash)
+It aggregates all search text (thousands of words) and feeds it to the **Gemini 2.5 Flash** model with a hedge-fund analyst prompt. Gemini analyzes the data and outputs a clean, structured recommendation.
+
+### 4. Interactive Results Dashboard
+The interface updates to show a beautiful, dark-themed dashboard containing:
+*   **INVEST ✓ or PASS ✗ Verdict**: A binary, decisive recommendation.
+*   **Confidence Score (0-100)**: An animated progress ring showing how confident the AI is in its recommendation.
+*   **Analyst Reasoning**: A detailed paragraph explaining why the verdict was chosen.
+*   **Strengths, Weaknesses, & Risks**: Three side-by-side bulleted cards detailing key takeaways.
+*   **Interactive Breakdown Cards**: Detailed descriptions and custom sentiment badges (Positive, Neutral, Negative) for the 4 search categories.
+
+---
+
+### 👤 USER
+
+<USER_REQUEST>
+everything good just add light theme pallate also
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-06-28T22:45:25+05:30.
+
+The user's current state is as follows:
+Active Document: c:\Users\shrey\Desktop\IIMtask\.env.local (LANGUAGE_UNSPECIFIED)
+Cursor is on line: 1
+Other open documents:
+- c:\Users\shrey\Downloads\MASTER_PROMPT_AI_Investment_Agent.md (LANGUAGE_MARKDOWN)
+- c:\Users\shrey\Desktop\IIMtask\.env.local (LANGUAGE_UNSPECIFIED)
+Browser State:
+  Page 863619C1B066FE5F96C705010A86EA3B (AI Investment Research Agent) - http://localhost:3000/ [ACTIVE]
+    Viewport: 1450x774, Page Height: 1933
+Running terminal commands:
+- npm run dev (in c:\Users\shrey\Desktop\IIMtask, running for 38m34s)
+</ADDITIONAL_METADATA>
+
+---
+
+### 🤖 ASSISTANT
+
+I will update `app/globals.css` to define our dual-theme palette. By mapping HSL variables to light and dark theme configurations, we create variables for background, text, borders, and glass backdrops. These variables are registered under the Tailwind v4 theme, making them accessible to our styling.
+
+---
+
+### 🤖 ASSISTANT
+
+I will update `app/page.tsx` to include the theme toggle logic (with Sun/Moon icons) and apply our semantic Tailwind theme tokens (`bg-bg-app`, `text-fg-app`, etc.) to the layout elements. This enables automatic light/dark styling transitions across the container and stock marquee.
+
+---
+
+### 🤖 ASSISTANT
+
+I will update `components/SearchForm.tsx` to utilize our semantic classes (`bg-card-bg`, `border-card-border`, `text-text-main`, and `text-text-muted`) instead of static slate colors. This ensures that the search form adapts to light and dark theme variables.
+
+---
+
+### 🤖 ASSISTANT
+
+I will update `app/globals.css` and `app/page.tsx` to set light mode as the default and use the standard `.dark` class modifier for dark mode. This enables us to use the native Tailwind `dark:` prefix for style overrides (such as soft green/red tints in cards).
+
+---
+
+### 🤖 ASSISTANT
+
+I will modify `app/page.tsx` to apply the `.dark` class when the theme state is `'dark'` and the `.light` class when the theme state is `'light'`. This links the semantic CSS variables with standard Tailwind class selectors.
+
+---
+
+### 🤖 ASSISTANT
+
+I will update `components/ResultsDashboard.tsx` to use semantic colors (`text-text-main`, `text-text-muted`, `bg-card-bg`, etc.) and adapt the strengths, weaknesses, and risks cards using Tailwind's `dark:` selectors so they render with light pastel tints in light mode and deep glowing dark tones in dark mode.
+
+---
+
+### 🤖 ASSISTANT
+
+I will update `components/ResearchSection.tsx` to support the dynamic theme configuration. The sentiment colors and icon boxes are configured to use soft pastel tints in light mode and glowing frames in dark mode, mapping directly to our theme setup.
+
+---
+
+### 🤖 ASSISTANT
+
+I will update `components/LoadingState.tsx` to use the theme semantic classes for headers and progress tracks. The terminal log window itself is styled to remain dark, mimicking a command-line terminal, which provides a nice design contrast in both themes.
+
+---
+
+### 🤖 ASSISTANT
+
+I will update `components/ScoreGauge.tsx` to ensure high contrast in both themes. The gauge's background track will use dynamic CSS classes (`text-slate-200 dark:text-slate-800`), and the text labels will adapt (`text-emerald-650 dark:text-emerald-400`) to remain clear in light mode.
+
+---
+
+### 🤖 ASSISTANT
+
+I will update `components/VerdictBadge.tsx` to configure proper text contrast in light mode by using `text-emerald-600 dark:text-emerald-400` and `text-rose-600 dark:text-rose-400` class mappings.
+
+---
+
+### 🤖 ASSISTANT
+
+I will run the project compiler build check once more to verify that all our component theme updates are compile-safe.
+
+---
+
+### 🤖 ASSISTANT
+
+I will wait for the build command to complete.
+
+---
+
+### 🤖 ASSISTANT
+
+I will run the browser subagent to verify the theme toggling flow. It will navigate to `http://localhost:3000`, test the search view, toggle to light theme, run a research run for `"Zomato"`, and confirm that the results render cleanly in the light palette. It will take screenshots to document both modes.
+
+---
+
+### 🤖 ASSISTANT
+
+I will update `walkthrough.md` in the artifacts folder to embed the new light mode screenshots and the WebP animation of the dual-theme toggle flow. This gives you a clear visual overview of both themes.
+
+---
+
+### 🤖 ASSISTANT
+
+I will run `git status` to see what changes are currently pending after our component styling upgrades.
+
+---
+
