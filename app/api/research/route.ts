@@ -3,6 +3,7 @@ import { runInvestmentAgent } from '@/lib/agent';
 import { getCachedVerdict, saveVerdictToCache } from '@/lib/db';
 
 export const maxDuration = 60; // Allow up to 60 seconds for Vercel
+export const dynamic = 'force-dynamic'; // Never statically cache this route
 
 export async function POST(req: NextRequest) {
   try {
