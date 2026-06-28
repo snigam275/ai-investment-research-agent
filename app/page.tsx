@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import SearchForm from '@/components/SearchForm';
 import LoadingState from '@/components/LoadingState';
 import ResultsDashboard from '@/components/ResultsDashboard';
+import TopTenChart from '@/components/TopTenChart';
+import SidePanel from '@/components/SidePanel';
 import { InvestmentVerdict } from '@/lib/types';
 import { Sparkles, ShieldAlert, Sun, Moon } from 'lucide-react';
 
@@ -27,6 +29,24 @@ export default function Home() {
   const [error, setError] = useState('');
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
 
+  // New visual analytics dashboard states
+  const [topCompanies, setTopCompanies] = useState<InvestmentVerdict[]>([]);
+  const [selectedSideCompany, setSelectedSideCompany] = useState<InvestmentVerdict | null>(null);
+  const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
+
+  // Fetch top researched companies list from database
+  const fetchTopCompanies = async () => {
+    try {
+      const res = await fetch('/api/top-companies');
+      if (res.ok) {
+        const data = await res.json();
+        setTopCompanies(data);
+      }
+    } catch (err) {
+      console.warn('Failed to load top researched companies:', err);
+    }
+  };
+
   // Handle client-side theme initialization
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') as 'dark' | 'light' | null;
@@ -35,6 +55,7 @@ export default function Home() {
     } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
       setTheme('light');
     }
+    fetchTopCompanies();
   }, []);
 
   // Update DOM when theme state changes
@@ -73,6 +94,8 @@ export default function Home() {
 
       setResult(data);
       setState('result');
+      // Update charts on successful results
+      fetchTopCompanies();
     } catch (err: any) {
       console.error('Frontend error:', err);
       setError(err.message ?? 'Something went wrong. Please check your environment keys and try again.');
@@ -84,6 +107,12 @@ export default function Home() {
     setState('idle');
     setResult(null);
     setCompany('');
+    fetchTopCompanies();
+  };
+
+  const handleOpenSidePanel = (verdict: InvestmentVerdict) => {
+    setSelectedSideCompany(verdict);
+    setIsSidePanelOpen(true);
   };
 
   return (
@@ -92,10 +121,10 @@ export default function Home() {
       {/* Theme Toggle Button */}
       <button
         onClick={toggleTheme}
-        className="absolute top-18 right-6 p-2.5 bg-card-bg border border-card-border rounded-xl text-text-muted hover:text-teal-600 dark:hover:text-indigo-400 hover:border-teal-500/40 transition-all duration-300 shadow-md cursor-pointer z-20 flex items-center justify-center"
+        className="absolute top-18 right-6 p-2.5 bg-card-bg border border-card-border rounded-xl text-text-muted hover:text-teal-600 dark:hover:text-indigo-400 hover:border-teal-500/40 transition-all duration-300 shadow-md cursor-pointer z-20 flex items-center justify-center animate-fade-in"
         aria-label="Toggle theme"
       >
-        {theme === 'dark' ? <Sun className="w-5 h-5 text-amber-400" /> : <Moon className="w-5 h-5 text-teal-650" />}
+        {theme === 'dark' ? <Sun className="w-5 h-5 text-amber-400" /> : <Moon className="w-5 h-5 text-teal-655" />}
       </button>
 
       {/* Background glowing effects */}
@@ -124,7 +153,7 @@ export default function Home() {
         {/* Header container (only show when idle or error) */}
         {(state === 'idle' || state === 'error') && (
           <div className="text-center mb-12 space-y-4 max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-teal-500/10 dark:bg-indigo-500/10 border border-teal-500/30 dark:border-indigo-500/30 text-teal-700 dark:text-indigo-400 rounded-full text-xs font-semibold tracking-wider uppercase mb-2 animate-pulse-slow">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-teal-500/10 dark:bg-indigo-500/10 border border-teal-500/30 dark:border-indigo-500/30 text-teal-750 dark:text-indigo-400 rounded-full text-xs font-semibold tracking-wider uppercase mb-2 animate-pulse-slow">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Investment Research Workspace</span>
             </div>
@@ -156,6 +185,11 @@ export default function Home() {
               </div>
             )}
 
+            {/* Top 10 Visual SVG Leaderboard */}
+            <div className="max-w-3xl w-full mx-auto pt-4 animate-fade-in">
+              <TopTenChart data={topCompanies} onSelectCompany={handleOpenSidePanel} />
+            </div>
+
             {/* Feature explanations */}
             <div className="grid md:grid-cols-3 gap-6 pt-10 max-w-3xl mx-auto text-text-muted text-xs text-center border-t border-border-main">
               <div className="space-y-2">
@@ -181,6 +215,13 @@ export default function Home() {
         )}
 
       </div>
+
+      {/* Side Slide-out Panel for historical record visualization */}
+      <SidePanel 
+        isOpen={isSidePanelOpen} 
+        onClose={() => setIsSidePanelOpen(false)} 
+        result={selectedSideCompany} 
+      />
 
       {/* Footer bar */}
       <footer className="w-full bg-bg-app border-t border-border-main py-6 text-center text-xs text-text-dim select-none relative z-10 transition-colors duration-300">

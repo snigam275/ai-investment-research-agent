@@ -1,3 +1,5 @@
+'use client';
+import { useState } from 'react';
 import { ResearchCategory } from '@/lib/types';
 import clsx from 'clsx';
 import { BarChart3, Newspaper, Swords, AlertTriangle } from 'lucide-react';
@@ -24,7 +26,7 @@ const SENTIMENT_STYLES = {
 
 const SENTIMENT_BADGE = {
   positive: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/25',
-  neutral: 'bg-slate-200/80 dark:bg-slate-800/60 text-slate-650 dark:text-slate-400 border border-slate-300 dark:border-slate-700',
+  neutral: 'bg-slate-200/80 dark:bg-slate-800/60 text-slate-655 dark:text-slate-400 border border-slate-300 dark:border-slate-700',
   negative: 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/25',
 };
 
@@ -33,7 +35,9 @@ interface Props {
 }
 
 export default function ResearchSection({ research }: Props) {
+  const [isExpanded, setIsExpanded] = useState(false);
   const Icon = ICONS[research.category] || BarChart3;
+
   return (
     <div className={clsx(
       'rounded-2xl border p-6 backdrop-blur-md transition-all duration-300 transform hover:-translate-y-1',
@@ -58,7 +62,22 @@ export default function ResearchSection({ research }: Props) {
           {research.sentiment}
         </span>
       </div>
-      <p className="text-sm leading-relaxed text-text-muted font-light whitespace-pre-line">{research.findings}</p>
+      
+      <p className={clsx(
+        "text-xs leading-relaxed text-text-muted font-light whitespace-pre-line transition-all duration-300",
+        !isExpanded && "line-clamp-3"
+      )}>
+        {research.findings}
+      </p>
+
+      {research.findings.length > 150 && (
+        <button 
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="mt-3 text-[10px] font-bold text-teal-650 dark:text-indigo-400 hover:text-teal-500 dark:hover:text-indigo-300 transition-colors cursor-pointer border-0 p-0 bg-transparent"
+        >
+          {isExpanded ? 'Collapse ↑' : 'Read More ↓'}
+        </button>
+      )}
     </div>
   );
 }
