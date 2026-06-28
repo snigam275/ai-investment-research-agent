@@ -8,6 +8,18 @@
   --color-slate-400: #94a3b8;
   --color-slate-100: #f1f5f9;
 
+  --color-bg-app: var(--background);
+  --color-fg-app: var(--foreground);
+  --color-card-bg: var(--card-bg);
+  --color-card-border: var(--card-border);
+  --color-card-hover: var(--card-hover-border);
+  --color-text-main: var(--text-primary);
+  --color-text-muted: var(--text-secondary);
+  --color-text-dim: var(--text-tertiary);
+  --color-border-main: var(--border-primary);
+  --color-ticker-bg: var(--bg-ticker);
+  --color-ticker-border: var(--border-ticker);
+
   --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-glow: glow 2s ease-in-out infinite alternate;
   
@@ -22,10 +34,37 @@
 }
 
 :root {
+  /* Light theme (default) */
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(226, 232, 240, 0.8);
+  --card-hover-border: rgba(99, 102, 241, 0.25);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-tertiary: #64748b;
+  --border-primary: #e2e8f0;
+  --bg-ticker: rgba(255, 255, 255, 0.9);
+  --border-ticker: rgba(226, 232, 240, 0.8);
+  --radial-indigo: rgba(99, 102, 241, 0.04);
+  --radial-violet: rgba(139, 92, 246, 0.04);
+}
+
+.dark {
+  /* Dark theme */
   --background: #020617;
   --foreground: #f8fafc;
   --card-bg: rgba(15, 23, 42, 0.4);
-  --card-border: rgba(51, 65, 85, 0.5);
+  --card-border: rgba(30, 41, 59, 0.8);
+  --card-hover-border: rgba(99, 102, 241, 0.3);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-tertiary: #64748b;
+  --border-primary: #1e293b;
+  --bg-ticker: rgba(15, 23, 42, 0.8);
+  --border-ticker: rgba(30, 41, 59, 0.6);
+  --radial-indigo: rgba(99, 102, 241, 0.08);
+  --radial-violet: rgba(139, 92, 246, 0.08);
 }
 
 body {
@@ -33,23 +72,24 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Custom Glow Utilities */
 @utility glow-emerald {
-  box-shadow: 0 0 20px rgba(16, 185, 129, 0.15), 0 0 4px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.12), 0 0 4px rgba(16, 185, 129, 0.2);
 }
 
 @utility glow-rose {
-  box-shadow: 0 0 20px rgba(244, 63, 94, 0.15), 0 0 4px rgba(244, 63, 94, 0.3);
+  box-shadow: 0 0 20px rgba(244, 63, 94, 0.12), 0 0 4px rgba(244, 63, 94, 0.2);
 }
 
 @utility glow-amber {
-  box-shadow: 0 0 20px rgba(245, 158, 11, 0.15), 0 0 4px rgba(245, 158, 11, 0.3);
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.12), 0 0 4px rgba(245, 158, 11, 0.2);
 }
 
 @utility glow-indigo {
-  box-shadow: 0 0 20px rgba(99, 102, 241, 0.2), 0 0 6px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.15), 0 0 6px rgba(99, 102, 241, 0.3);
 }
 
 /* Animation Delays */
@@ -93,16 +133,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #020617;
+  background: var(--background);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: var(--border-primary);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: var(--text-tertiary);
 }
 
 /* Shimmer animation for loading states */

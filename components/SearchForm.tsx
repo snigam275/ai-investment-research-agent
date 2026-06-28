@@ -21,13 +21,13 @@ export default function SearchForm({ onSubmit, isLoading }: Props) {
     <div className="w-full max-w-2xl mx-auto space-y-5">
       <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
         <div className="relative flex-1">
-          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
+          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-text-muted w-5 h-5" />
           <input
             type="text"
             value={value}
             onChange={e => setValue(e.target.value)}
             placeholder="Enter a company name (e.g. Tata Motors, Nvidia)"
-            className="w-full pl-12 pr-5 py-4 bg-slate-900/60 border border-slate-800 text-slate-100 placeholder-slate-500 text-base rounded-2xl shadow-xl focus:border-indigo-500/85 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none transition-all duration-300 select-text"
+            className="w-full pl-12 pr-5 py-4 bg-card-bg border border-card-border text-text-main placeholder-slate-500 text-base rounded-2xl shadow-md focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none transition-all duration-300 select-text"
             disabled={isLoading}
           />
         </div>
@@ -48,14 +48,14 @@ export default function SearchForm({ onSubmit, isLoading }: Props) {
       </form>
 
       <div className="flex flex-wrap gap-2 items-center justify-center text-sm">
-        <span className="text-slate-500 font-medium tracking-wide">Popular:</span>
+        <span className="text-text-muted font-medium tracking-wide">Popular:</span>
         {EXAMPLES.map(ex => (
           <button
             key={ex}
             type="button"
             onClick={() => { setValue(ex); onSubmit(ex); }}
             disabled={isLoading}
-            className="text-xs bg-slate-900/50 hover:bg-indigo-950/20 text-slate-400 hover:text-indigo-400 border border-slate-800/80 hover:border-indigo-500/40 rounded-full px-3.5 py-1.5 transition-all duration-300 font-medium disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+            className="text-xs bg-card-bg hover:bg-indigo-950/20 text-text-muted hover:text-indigo-550 dark:hover:text-indigo-400 border border-card-border hover:border-indigo-500/60 rounded-full px-3.5 py-1.5 transition-all duration-300 font-medium disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
           >
             {ex}
           </button>

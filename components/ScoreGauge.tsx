@@ -22,23 +22,18 @@ export default function ScoreGauge({ score }: Props) {
   // Determine colors based on thresholds
   const isHigh = score >= 60;
   const isMid = score >= 40 && score < 60;
-  const strokeColorClass = isHigh 
-    ? 'text-emerald-500' 
-    : isMid 
-      ? 'text-amber-500' 
-      : 'text-rose-500';
 
   const glowColorClass = isHigh
-    ? 'drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]'
+    ? 'drop-shadow-[0_0_8px_rgba(16,185,129,0.4)]'
     : isMid
-      ? 'drop-shadow-[0_0_8px_rgba(245,158,11,0.5)]'
-      : 'drop-shadow-[0_0_8px_rgba(244,63,94,0.5)]';
+      ? 'drop-shadow-[0_0_8px_rgba(245,158,11,0.4)]'
+      : 'drop-shadow-[0_0_8px_rgba(244,63,94,0.4)]';
 
   const labelColorClass = isHigh 
-    ? 'text-emerald-400' 
+    ? 'text-emerald-600 dark:text-emerald-400' 
     : isMid 
-      ? 'text-amber-400' 
-      : 'text-rose-400';
+      ? 'text-amber-600 dark:text-amber-400' 
+      : 'text-rose-600 dark:text-rose-400';
 
   return (
     <div className="flex flex-col items-center gap-3">
@@ -64,9 +59,9 @@ export default function ScoreGauge({ score }: Props) {
             cy="70" 
             r={radius} 
             fill="none" 
-            stroke="#1e293b" 
+            stroke="currentColor" 
             strokeWidth="10" 
-            className="opacity-60"
+            className="text-slate-200 dark:text-slate-800 opacity-60 transition-colors duration-300"
           />
           {/* Progress circle */}
           <circle
@@ -84,15 +79,15 @@ export default function ScoreGauge({ score }: Props) {
         </svg>
         {/* Absolute centered labels */}
         <div className="absolute flex flex-col items-center justify-center text-center">
-          <span className={`text-4xl font-extrabold tracking-tighter ${labelColorClass}`}>
+          <span className={`text-4xl font-extrabold tracking-tighter ${labelColorClass} transition-colors duration-300`}>
             {score}
           </span>
-          <span className="text-[10px] text-slate-500 uppercase font-semibold tracking-wider -mt-1">
+          <span className="text-[10px] text-text-dim uppercase font-semibold tracking-wider -mt-1 transition-colors duration-300">
             confidence
           </span>
         </div>
       </div>
-      <p className="text-xs text-slate-400 font-medium tracking-wide uppercase">Confidence Rating</p>
+      <p className="text-xs text-text-muted font-medium tracking-wide uppercase transition-colors duration-300">Confidence Rating</p>
     </div>
   );
 }
