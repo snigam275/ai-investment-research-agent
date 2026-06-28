@@ -27,14 +27,14 @@ export default function SearchForm({ onSubmit, isLoading }: Props) {
             value={value}
             onChange={e => setValue(e.target.value)}
             placeholder="Enter a company name (e.g. Tata Motors, Nvidia)"
-            className="w-full pl-12 pr-5 py-4 bg-card-bg border border-card-border text-text-main placeholder-slate-500 text-base rounded-2xl shadow-md focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none transition-all duration-300 select-text"
+            className="w-full pl-12 pr-5 py-4 bg-card-bg border border-card-border text-text-main placeholder-slate-500 text-base rounded-2xl shadow-md focus:border-teal-500 dark:focus:border-indigo-500 focus:ring-2 focus:ring-teal-500/10 dark:focus:ring-indigo-500/10 focus:outline-none transition-all duration-300 select-text"
             disabled={isLoading}
           />
         </div>
         <button
           type="submit"
           disabled={isLoading || !value.trim()}
-          className="px-8 py-4 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 disabled:from-slate-800 disabled:to-slate-800 disabled:text-slate-500 disabled:cursor-not-allowed text-white font-bold rounded-2xl transition-all duration-300 text-base shadow-[0_0_15px_rgba(99,102,241,0.2)] hover:shadow-[0_0_25px_rgba(99,102,241,0.4)] flex items-center justify-center gap-2 cursor-pointer"
+          className="px-8 py-4 bg-gradient-to-r from-teal-650 to-cyan-600 hover:from-teal-600 hover:to-cyan-550 dark:from-indigo-600 dark:to-violet-600 dark:hover:from-indigo-500 dark:hover:to-violet-500 disabled:from-slate-800 disabled:to-slate-800 disabled:text-slate-500 disabled:cursor-not-allowed text-white font-bold rounded-2xl transition-all duration-300 text-base shadow-[0_0_15px_rgba(13,148,136,0.25)] dark:shadow-[0_0_15px_rgba(99,102,241,0.2)] hover:shadow-[0_0_25px_rgba(13,148,136,0.35)] dark:hover:shadow-[0_0_25px_rgba(99,102,241,0.4)] flex items-center justify-center gap-2 cursor-pointer"
         >
           {isLoading ? (
             <span className="animate-pulse">Researching...</span>
@@ -55,7 +55,7 @@ export default function SearchForm({ onSubmit, isLoading }: Props) {
             type="button"
             onClick={() => { setValue(ex); onSubmit(ex); }}
             disabled={isLoading}
-            className="text-xs bg-card-bg hover:bg-indigo-950/20 text-text-muted hover:text-indigo-550 dark:hover:text-indigo-400 border border-card-border hover:border-indigo-500/60 rounded-full px-3.5 py-1.5 transition-all duration-300 font-medium disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+            className="text-xs bg-card-bg hover:bg-teal-500/10 dark:hover:bg-indigo-950/20 text-text-muted hover:text-teal-600 dark:hover:text-indigo-400 border border-card-border hover:border-teal-500/40 dark:hover:border-indigo-500/40 rounded-full px-3.5 py-1.5 transition-all duration-300 font-medium disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
           >
             {ex}
           </button>

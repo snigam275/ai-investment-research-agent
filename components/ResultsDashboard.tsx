@@ -95,7 +95,7 @@ export default function ResultsDashboard({ result, onReset }: Props) {
         <span>Analysis generated at {new Date(result.timestamp).toLocaleString()}</span>
         <button
           onClick={onReset}
-          className="text-indigo-650 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 font-bold flex items-center gap-1.5 transition-colors cursor-pointer"
+          className="text-teal-650 dark:text-indigo-400 hover:text-teal-550 dark:hover:text-indigo-300 font-bold flex items-center gap-1.5 transition-colors cursor-pointer"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Analyze another company</span>

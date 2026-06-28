@@ -87,15 +87,15 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen relative bg-bg-app text-fg-app flex flex-col justify-between overflow-x-hidden selection:bg-indigo-500/30">
+    <main className="min-h-screen relative bg-bg-app text-fg-app flex flex-col justify-between overflow-x-hidden selection:bg-teal-500/30">
       
       {/* Theme Toggle Button */}
       <button
         onClick={toggleTheme}
-        className="absolute top-18 right-6 p-2.5 bg-card-bg border border-card-border rounded-xl text-text-muted hover:text-indigo-400 hover:border-indigo-500/40 transition-all duration-300 shadow-md cursor-pointer z-20 flex items-center justify-center"
+        className="absolute top-18 right-6 p-2.5 bg-card-bg border border-card-border rounded-xl text-text-muted hover:text-teal-600 dark:hover:text-indigo-400 hover:border-teal-500/40 transition-all duration-300 shadow-md cursor-pointer z-20 flex items-center justify-center"
         aria-label="Toggle theme"
       >
-        {theme === 'dark' ? <Sun className="w-5 h-5 text-amber-400" /> : <Moon className="w-5 h-5 text-indigo-500" />}
+        {theme === 'dark' ? <Sun className="w-5 h-5 text-amber-400" /> : <Moon className="w-5 h-5 text-teal-650" />}
       </button>
 
       {/* Background glowing effects */}
@@ -110,7 +110,7 @@ export default function Home() {
             <div key={index} className="flex items-center gap-2 mx-8 text-xs font-mono">
               <span className="font-bold text-text-main">{item.symbol}</span>
               <span className="text-text-muted">{item.price}</span>
-              <span className={item.positive ? 'text-emerald-500 font-semibold' : 'text-rose-500 font-semibold'}>
+              <span className={item.positive ? 'text-emerald-600 dark:text-emerald-400 font-semibold' : 'text-rose-600 dark:text-rose-400 font-semibold'}>
                 {item.change}
               </span>
             </div>
@@ -124,14 +124,14 @@ export default function Home() {
         {/* Header container (only show when idle or error) */}
         {(state === 'idle' || state === 'error') && (
           <div className="text-center mb-12 space-y-4 max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-indigo-500/10 border border-indigo-500/30 text-indigo-500 dark:text-indigo-400 rounded-full text-xs font-semibold tracking-wider uppercase mb-2 animate-pulse-slow">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-teal-500/10 dark:bg-indigo-500/10 border border-teal-500/30 dark:border-indigo-500/30 text-teal-700 dark:text-indigo-400 rounded-full text-xs font-semibold tracking-wider uppercase mb-2 animate-pulse-slow">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Investment Research Workspace</span>
             </div>
             <h1 className={`text-4xl md:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent pb-1 bg-gradient-to-r ${
               theme === 'dark'
                 ? 'from-slate-100 via-indigo-200 to-indigo-400'
-                : 'from-slate-900 via-indigo-950 to-indigo-800'
+                : 'from-teal-800 via-cyan-900 to-amber-600'
             }`}>
               AI Investment Research Agent
             </h1>
@@ -147,8 +147,8 @@ export default function Home() {
             <SearchForm onSubmit={handleSearch} isLoading={false} />
             
             {state === 'error' && (
-              <div className="max-w-2xl mx-auto bg-rose-500/10 border border-rose-500/30 rounded-2xl p-5 text-rose-600 dark:text-rose-300 text-sm flex gap-3 items-start glow-rose">
-                <ShieldAlert className="w-5 h-5 shrink-0 text-rose-500 dark:text-rose-400 mt-0.5" />
+              <div className="max-w-2xl mx-auto bg-rose-500/10 border border-rose-500/30 rounded-2xl p-5 text-rose-700 dark:text-rose-300 text-sm flex gap-3 items-start glow-rose">
+                <ShieldAlert className="w-5 h-5 shrink-0 text-rose-600 dark:text-rose-400 mt-0.5" />
                 <div className="space-y-1">
                   <p className="font-bold text-rose-800 dark:text-rose-250">Execution Blocked</p>
                   <p className="leading-relaxed font-light">{error}</p>
@@ -159,15 +159,15 @@ export default function Home() {
             {/* Feature explanations */}
             <div className="grid md:grid-cols-3 gap-6 pt-10 max-w-3xl mx-auto text-text-muted text-xs text-center border-t border-border-main">
               <div className="space-y-2">
-                <div className="text-indigo-500 dark:text-indigo-400 font-bold uppercase tracking-wider">Parallel Research</div>
+                <div className="text-teal-700 dark:text-indigo-400 font-bold uppercase tracking-wider">Parallel Research</div>
                 <p className="leading-relaxed font-light">Executes 4 Tavily searches concurrently (Financials, News, Peers, Risks) to compile comprehensive intelligence.</p>
               </div>
               <div className="space-y-2 border-y md:border-y-0 md:border-x border-border-main py-4 md:py-0 md:px-6">
-                <div className="text-indigo-500 dark:text-indigo-400 font-bold uppercase tracking-wider">Gemini Synthesis</div>
+                <div className="text-teal-700 dark:text-indigo-400 font-bold uppercase tracking-wider">Gemini Synthesis</div>
                 <p className="leading-relaxed font-light">Processes search results with Google Gemini 2.5 Flash using structured analysis prompt logic.</p>
               </div>
               <div className="space-y-2">
-                <div className="text-indigo-500 dark:text-indigo-400 font-bold uppercase tracking-wider">Decisive Verdicts</div>
+                <div className="text-teal-700 dark:text-indigo-400 font-bold uppercase tracking-wider">Decisive Verdicts</div>
                 <p className="leading-relaxed font-light">Returns binary Invest/Pass actions, custom confidence ratings, and fully classified pros and cons lists.</p>
               </div>
             </div>
