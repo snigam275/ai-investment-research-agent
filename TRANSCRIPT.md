@@ -1395,3 +1395,15 @@ I will update `walkthrough.md` to include our new screenshots and recording. Thi
 
 ---
 
+### 🤖 ASSISTANT
+
+I will run the transcript updater script to include our custom warm yellow + greenish-blue theme checks in `TRANSCRIPT.md`, and commit the final changes.
+
+---
+
+### 🤖 ASSISTANT
+
+I will run a final check on `git status` to ensure our local Git repository is completely clean.
+
+---
+
