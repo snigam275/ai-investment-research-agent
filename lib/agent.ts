@@ -129,10 +129,10 @@ async function analysisNode(state: AgentStateType) {
 // Build the LangGraph state machine
 function buildGraph() {
   const graph = new StateGraph(AgentStateAnnotation)
-    .addNode('research', researchNode)
+    .addNode('conductResearch', researchNode)
     .addNode('analysis', analysisNode)
-    .addEdge(START, 'research')
-    .addEdge('research', 'analysis')
+    .addEdge(START, 'conductResearch')
+    .addEdge('conductResearch', 'analysis')
     .addEdge('analysis', END);
 
   return graph.compile();
